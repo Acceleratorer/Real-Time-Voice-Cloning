@@ -93,9 +93,13 @@ uv run --extra cuda clone-voice \
 
 The first run downloads pretrained SV2TTS models from [Hugging Face](https://huggingface.co/CorentinJ/SV2TTS/tree/main) into `saved_models/default/`. The generated WAV is written to the path passed with `--output`, and the CLI prints stage timings for local benchmarking.
 
+## Toolbox Preview
+
+![SV2TTS toolbox screenshot](assets/toolbox_screenshot.png)
+
 ## Demo
 
-Reference voice:
+Reference voice for normal runs:
 
 ```text
 samples/p240_00000.mp3
@@ -113,16 +117,20 @@ Generated output:
 outputs/demo_output.wav
 ```
 
-Run the command in the previous section to create the output locally. Generated WAV files are ignored by git so demo artifacts do not accidentally bloat the repository.
+Generated demo spectrogram:
+
+![Generated demo spectrogram](assets/demo_spectrogram.png)
+
+Run the command in the previous section to create audio locally. Generated WAV files are ignored by git so demo artifacts do not accidentally bloat the repository.
 
 ## Local Benchmark
 
-After running `clone_voice.py`, record the printed stage timings here:
+Measured locally on Windows with Python 3.9.25 and PyTorch 1.10.2+cu113. The benchmark used a generated 5-second WAV reference at `assets/benchmark_reference.wav` because FFmpeg was not available on `PATH` for MP3 decoding during the run.
 
 | Mode | Reference Audio | Text Length | Load Models | Encode | Synthesize | Vocode | Notes |
 |---|---:|---:|---:|---:|---:|---:|---|
-| CPU | 5s | 7 words | TBD | TBD | TBD | TBD | Fill after local run |
-| CUDA | 5s | 7 words | TBD | TBD | TBD | TBD | Fill after local run |
+| CPU | 5s | 7 words | 0.13s | 0.13s | 1.43s | 18.86s | Forced CPU with `--cpu` |
+| CUDA | 5s | 7 words | 4.60s | 2.25s | 4.39s | 17.19s | RTX 3050 Ti 4GB |
 
 This is intentionally a local benchmark table, not a claimed public benchmark. Hardware, CUDA version, and audio device setup can change results substantially.
 
@@ -142,6 +150,7 @@ CI runs the same smoke and lightweight functional tests on Ubuntu with Python 3.
 - [Architecture](docs/ARCHITECTURE.md)
 - [Benchmarking](docs/BENCHMARK.md)
 - [Comparison with upstream](docs/COMPARISON.md)
+- [CV wording](docs/CV.md)
 
 ## Responsible Use
 

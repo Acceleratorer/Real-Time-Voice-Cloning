@@ -19,8 +19,8 @@ CORE_PACKAGES = [
     "scipy",
     "soundfile",
     "torch",
-    "webrtcvad",
 ]
+OPTIONAL_PACKAGES = ["webrtcvad"]
 
 
 def check_python_version(version_info=None):
@@ -40,6 +40,12 @@ def check_ffmpeg():
 def check_package(module_name):
     installed = importlib.util.find_spec(module_name) is not None
     return installed, module_name
+
+
+def check_optional_package(module_name):
+    installed = importlib.util.find_spec(module_name) is not None
+    detail = "installed" if installed else "not installed"
+    return True, f"{module_name} optional ({detail})"
 
 
 def check_model_files(models_dir=DEFAULT_MODELS_DIR):
@@ -68,6 +74,7 @@ def run_checks(models_dir=DEFAULT_MODELS_DIR):
     checks.append(check_python_version())
     checks.append(check_ffmpeg())
     checks.extend(check_package(package) for package in CORE_PACKAGES)
+    checks.extend(check_optional_package(package) for package in OPTIONAL_PACKAGES)
     checks.extend(check_model_files(models_dir))
     return checks
 

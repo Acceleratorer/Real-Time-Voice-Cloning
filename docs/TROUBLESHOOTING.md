@@ -92,4 +92,12 @@ Quality usually improves with:
 
 ## `webrtcvad` warnings
 
-`webrtcvad` enables silence trimming. If it fails to install or import, preprocessing still works, but long silence removal is skipped.
+`webrtcvad` enables silence trimming. It is optional because it may require Microsoft C++ Build Tools on Windows.
+
+Install it only if you need VAD-based silence trimming:
+
+```bash
+uv sync --extra cpu --extra vad --dev
+```
+
+If it is not installed, preprocessing still works, but long silence removal is skipped.

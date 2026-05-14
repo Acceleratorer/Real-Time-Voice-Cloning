@@ -622,7 +622,7 @@ wheels = [
 [[package]]
 name = "real-time-voice-cloning"
 version = "0.0.0"
-source = { virtual = "." }
+source = { editable = "." }
 dependencies = [
     { name = "huggingface-hub", extra = ["hf-xet"] },
     { name = "inflect" },
@@ -641,7 +641,6 @@ dependencies = [
     { name = "unidecode" },
     { name = "urllib3" },
     { name = "visdom" },
-    { name = "webrtcvad" },
 ]
 
 [package.optional-dependencies]
@@ -651,6 +650,9 @@ cpu = [
 ]
 cuda = [
     { name = "torch", version = "1.10.2+cu113", source = { registry = "https://download.pytorch.org/whl/cu113" } },
+]
+vad = [
+    { name = "webrtcvad" },
 ]
 
 [package.dev-dependencies]
@@ -679,9 +681,9 @@ requires-dist = [
     { name = "unidecode", specifier = "==1.3.2" },
     { name = "urllib3", specifier = "==1.26.7" },
     { name = "visdom", specifier = "==0.1.8.9" },
-    { name = "webrtcvad", specifier = "==2.0.10" },
+    { name = "webrtcvad", marker = "extra == 'vad'", specifier = "==2.0.10" },
 ]
-provides-extras = ["cpu", "cuda"]
+provides-extras = ["cpu", "cuda", "vad"]
 
 [package.metadata.requires-dev]
 dev = [{ name = "pytest" }]
@@ -831,9 +833,9 @@ dependencies = [
     { name = "typing-extensions", marker = "(platform_machine == 'aarch64' and platform_python_implementation == 'CPython' and sys_platform == 'linux') or sys_platform == 'darwin'" },
 ]
 wheels = [
-    { url = "https://download.pytorch.org/whl/cpu/torch-1.10.2-cp39-cp39-manylinux2014_aarch64.whl", hash = "sha256:97b7b0c667e8b0dd1fc70137a36e0a4841ec10ef850bda60500ad066bef3e2de" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-1.10.2-cp39-none-macosx_10_9_x86_64.whl", hash = "sha256:5b68e9108bd7ebd99eee941686046c517cfaac5331f757bcf440fe02f2e3ced1" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-1.10.2-cp39-none-macosx_11_0_arm64.whl", hash = "sha256:b07ef01e36b716d0d65ca60c4db0ac9d094a0e797d9b55290da4dcda91463b6c" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-1.10.2-cp39-cp39-manylinux2014_aarch64.whl", hash = "sha256:97b7b0c667e8b0dd1fc70137a36e0a4841ec10ef850bda60500ad066bef3e2de", upload-time = "2023-10-06T00:00:51Z" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-1.10.2-cp39-none-macosx_10_9_x86_64.whl", hash = "sha256:5b68e9108bd7ebd99eee941686046c517cfaac5331f757bcf440fe02f2e3ced1", upload-time = "2023-10-06T00:00:54Z" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-1.10.2-cp39-none-macosx_11_0_arm64.whl", hash = "sha256:b07ef01e36b716d0d65ca60c4db0ac9d094a0e797d9b55290da4dcda91463b6c", upload-time = "2023-10-06T00:01:00Z" },
 ]
 
 [[package]]
@@ -848,8 +850,8 @@ dependencies = [
     { name = "typing-extensions", marker = "(platform_machine != 'aarch64' and sys_platform == 'linux') or (platform_python_implementation != 'CPython' and sys_platform == 'linux') or (sys_platform != 'darwin' and sys_platform != 'linux')" },
 ]
 wheels = [
-    { url = "https://download.pytorch.org/whl/cpu/torch-1.10.2%2Bcpu-cp39-cp39-linux_x86_64.whl", hash = "sha256:318d52242f07288bec58829d445452ee5767f34ba0cf32ec08c50febecc47e24" },
-    { url = "https://download.pytorch.org/whl/cpu/torch-1.10.2%2Bcpu-cp39-cp39-win_amd64.whl", hash = "sha256:822e3c3f8eb042570fe69b665c955c36970ecb8f5bec9a43a5ed7bbe1831ea93" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-1.10.2%2Bcpu-cp39-cp39-linux_x86_64.whl", hash = "sha256:318d52242f07288bec58829d445452ee5767f34ba0cf32ec08c50febecc47e24", upload-time = "2023-10-06T00:00:02Z" },
+    { url = "https://download-r2.pytorch.org/whl/cpu/torch-1.10.2%2Bcpu-cp39-cp39-win_amd64.whl", hash = "sha256:822e3c3f8eb042570fe69b665c955c36970ecb8f5bec9a43a5ed7bbe1831ea93", upload-time = "2023-10-06T00:00:09Z" },
 ]
 
 [[package]]
@@ -864,8 +866,8 @@ dependencies = [
     { name = "typing-extensions" },
 ]
 wheels = [
-    { url = "https://download.pytorch.org/whl/cu113/torch-1.10.2%2Bcu113-cp39-cp39-linux_x86_64.whl", hash = "sha256:f1f985ce8591b20aa038756a83c348144ca10119952f4ae5703dbb7aae1b3ce2" },
-    { url = "https://download.pytorch.org/whl/cu113/torch-1.10.2%2Bcu113-cp39-cp39-win_amd64.whl", hash = "sha256:15c87057a7c221460abee15795710c9b50898167abb134fdb39eced76f6e9dff" },
+    { url = "https://download-r2.pytorch.org/whl/cu113/torch-1.10.2%2Bcu113-cp39-cp39-linux_x86_64.whl", hash = "sha256:f1f985ce8591b20aa038756a83c348144ca10119952f4ae5703dbb7aae1b3ce2", upload-time = "2023-10-06T22:14:02Z" },
+    { url = "https://download-r2.pytorch.org/whl/cu113/torch-1.10.2%2Bcu113-cp39-cp39-win_amd64.whl", hash = "sha256:15c87057a7c221460abee15795710c9b50898167abb134fdb39eced76f6e9dff", upload-time = "2023-10-06T22:15:11Z" },
 ]
 
 [[package]]

@@ -53,6 +53,8 @@ uv sync --extra cuda --dev
 
 The project pins Python to `>=3.9,<3.10` because the original dependency stack is old and some wheels are version-sensitive.
 
+`webrtcvad` is optional on Windows because it may require Microsoft C++ Build Tools. Install it with `--extra vad` only if you need VAD-based silence trimming.
+
 ## 4. Run Tests
 
 ```powershell

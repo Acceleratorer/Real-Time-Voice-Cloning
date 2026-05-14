@@ -14,10 +14,14 @@
 *.bcf
 *.toc
 *.wav
+!assets/benchmark_reference.wav
 *.sh
 encoder/saved_models/*
 synthesizer/saved_models/*
 vocoder/saved_models/*
 saved_models/*
 .venv/
+.uv-cache/
+.tmp/
+*.egg-info/
 .pytest_cache/
