@@ -68,3 +68,11 @@ def test_doctor_model_file_checks_missing_dir(tmp_path):
 
     assert len(results) == len(DEFAULT_MODEL_SIZES)
     assert all(not ok for ok, _ in results)
+
+
+def test_doctor_formats_optional_warning():
+    from doctor import format_result
+
+    label = "webrtcvad not installed; silence trimming will be disabled"
+
+    assert format_result(None, label) == f"[WARN] {label}"

@@ -44,8 +44,9 @@ def check_package(module_name):
 
 def check_optional_package(module_name):
     installed = importlib.util.find_spec(module_name) is not None
-    detail = "installed" if installed else "not installed"
-    return True, f"{module_name} optional ({detail})"
+    if installed:
+        return True, f"{module_name} optional (installed)"
+    return None, f"{module_name} not installed; silence trimming will be disabled"
 
 
 def check_model_files(models_dir=DEFAULT_MODELS_DIR):
@@ -65,7 +66,10 @@ def check_model_files(models_dir=DEFAULT_MODELS_DIR):
 
 
 def format_result(ok, label):
-    mark = "OK" if ok else "!!"
+    if ok is None:
+        mark = "WARN"
+    else:
+        mark = "OK" if ok else "!!"
     return f"[{mark}] {label}"
 
 
@@ -106,7 +110,7 @@ def main(argv=None):
     for ok, label in checks:
         print(format_result(ok, label))
 
-    failed = [label for ok, label in checks if not ok]
+    failed = [label for ok, label in checks if ok is False]
     if failed:
         print("\nSome checks failed. See docs/TROUBLESHOOTING.md for fixes.")
         return 1 if args.strict else 0

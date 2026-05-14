@@ -7,13 +7,22 @@ Use `clone_voice.py` for local benchmark runs. It prints stage timings for model
 CPU:
 
 ```bash
-uv run --extra cuda clone-voice --cpu --reference assets/benchmark_reference.wav --text "Welcome to my real-time voice cloning experiment." --output outputs/benchmark_cpu.wav --no_trim_output
+uv run --extra cpu clone-voice \
+  --cpu \
+  --reference assets/benchmark_reference.wav \
+  --text "Welcome to my real-time voice cloning experiment." \
+  --output outputs/benchmark_cpu.wav \
+  --no_trim_output
 ```
 
 CUDA:
 
 ```bash
-uv run --extra cuda clone-voice --reference assets/benchmark_reference.wav --text "Welcome to my real-time voice cloning experiment." --output outputs/benchmark_cuda.wav --no_trim_output
+uv run --extra cuda clone-voice \
+  --reference assets/benchmark_reference.wav \
+  --text "Welcome to my real-time voice cloning experiment." \
+  --output outputs/benchmark_cuda.wav \
+  --no_trim_output
 ```
 
 ## Local Results
@@ -34,10 +43,10 @@ These numbers are a single warm run after pretrained models were already downloa
 
 | Mode | Reference Audio | Text Length | Load Models | Encode | Synthesize | Vocode | Output |
 |---|---:|---:|---:|---:|---:|---:|---|
-| CPU | 5s | 7 words | 0.13s | 0.13s | 1.43s | 18.86s | `outputs/demo_output_cpu.wav` |
-| CUDA | 5s | 7 words | 4.60s | 2.25s | 4.39s | 17.19s | `outputs/demo_output_cuda.wav` |
+| CPU | 5s | 7 words | 0.13s | 0.13s | 1.43s | 18.86s | `outputs/benchmark_cpu.wav` |
+| CUDA | 5s | 7 words | 4.60s | 2.25s | 4.39s | 17.19s | `outputs/benchmark_cuda.wav` |
 
-The CUDA output from this benchmark is published as the [demo-audio-v1 release](https://github.com/Acceleratorer/Real-Time-Voice-Cloning/releases/tag/demo-audio-v1).
+The CUDA demo artifact uses the same benchmark reference and prompt, and is published separately as the [demo-audio-v1 release](https://github.com/Acceleratorer/Real-Time-Voice-Cloning/releases/tag/demo-audio-v1).
 
 ## Notes
 

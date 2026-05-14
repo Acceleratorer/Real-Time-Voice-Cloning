@@ -71,6 +71,12 @@ Check your setup before running model inference:
 uv run --extra cpu voice-clone-doctor
 ```
 
+Install the optional VAD extra if you want VAD-based silence trimming:
+
+```bash
+uv sync --extra cpu --extra vad
+```
+
 ## One-Command Voice Cloning
 
 Generate audio from a reference sample and text prompt:
@@ -137,6 +143,13 @@ Measured locally on Windows with Python 3.9.25 and PyTorch 1.10.2+cu113. The ben
 | CUDA | 5s | 7 words | 4.60s | 2.25s | 4.39s | 17.19s | RTX 3050 Ti 4GB |
 
 This is intentionally a local benchmark table, not a claimed public benchmark. Hardware, CUDA version, and audio device setup can change results substantially.
+
+## Known Limitations
+
+- This fork modernizes the development workflow around the classic SV2TTS pipeline; it does not claim state-of-the-art voice quality.
+- CUDA performance may vary depending on driver, PyTorch version, GPU memory, and warm/cold model loading.
+- `webrtcvad` is optional; without it, silence trimming is disabled.
+- MP3 decoding requires FFmpeg to be available on `PATH`; WAV references are recommended for the most reproducible benchmark runs.
 
 ## Testing
 
