@@ -1,5 +1,17 @@
 # Troubleshooting
 
+Run the setup doctor first:
+
+```bash
+uv run --extra cpu voice-clone-doctor
+```
+
+Use strict mode in CI or scripts:
+
+```bash
+uv run --extra cpu voice-clone-doctor --strict
+```
+
 ## `ffmpeg` is not found
 
 Install FFmpeg and make sure its `bin` directory is on `PATH`.

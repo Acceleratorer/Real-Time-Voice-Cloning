@@ -48,3 +48,23 @@ def test_clone_voice_parser_defaults():
     assert enc_model.name == "encoder.pt"
     assert syn_model.name == "synthesizer.pt"
     assert voc_model.name == "vocoder.pt"
+
+
+def test_doctor_python_version_check_accepts_project_python():
+    from types import SimpleNamespace
+
+    from doctor import check_python_version
+
+    ok, label = check_python_version(SimpleNamespace(major=3, minor=9, micro=18))
+
+    assert ok
+    assert "Python 3.9.18" in label
+
+
+def test_doctor_model_file_checks_missing_dir(tmp_path):
+    from doctor import DEFAULT_MODEL_SIZES, check_model_files
+
+    results = check_model_files(tmp_path / "missing")
+
+    assert len(results) == len(DEFAULT_MODEL_SIZES)
+    assert all(not ok for ok, _ in results)

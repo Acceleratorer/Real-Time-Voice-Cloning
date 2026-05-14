@@ -7,13 +7,13 @@ Use `clone_voice.py` for local benchmark runs. It prints stage timings for model
 CPU:
 
 ```bash
-uv run --extra cpu clone_voice.py --reference samples/p240_00000.mp3 --text "Welcome to my real-time voice cloning experiment." --output outputs/benchmark_cpu.wav
+uv run --extra cpu clone-voice --reference samples/p240_00000.mp3 --text "Welcome to my real-time voice cloning experiment." --output outputs/benchmark_cpu.wav
 ```
 
 CUDA:
 
 ```bash
-uv run --extra cuda clone_voice.py --reference samples/p240_00000.mp3 --text "Welcome to my real-time voice cloning experiment." --output outputs/benchmark_cuda.wav
+uv run --extra cuda clone-voice --reference samples/p240_00000.mp3 --text "Welcome to my real-time voice cloning experiment." --output outputs/benchmark_cuda.wav
 ```
 
 ## Results Template

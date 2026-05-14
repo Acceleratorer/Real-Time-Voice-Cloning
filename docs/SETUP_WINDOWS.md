@@ -59,18 +59,24 @@ The project pins Python to `>=3.9,<3.10` because the original dependency stack i
 uv run pytest -q
 ```
 
-## 5. Run a Demo
+## 5. Check Your Setup
+
+```powershell
+uv run --extra cpu voice-clone-doctor
+```
+
+## 6. Run a Demo
 
 CPU:
 
 ```powershell
-uv run --extra cpu clone_voice.py --reference samples/p240_00000.mp3 --text "Welcome to my real-time voice cloning experiment." --output outputs/demo_output.wav
+uv run --extra cpu clone-voice --reference samples/p240_00000.mp3 --text "Welcome to my real-time voice cloning experiment." --output outputs/demo_output.wav
 ```
 
 CUDA:
 
 ```powershell
-uv run --extra cuda clone_voice.py --reference samples/p240_00000.mp3 --text "Welcome to my real-time voice cloning experiment." --output outputs/demo_output.wav
+uv run --extra cuda clone-voice --reference samples/p240_00000.mp3 --text "Welcome to my real-time voice cloning experiment." --output outputs/demo_output.wav
 ```
 
 The first run downloads pretrained models into `saved_models/default/`.

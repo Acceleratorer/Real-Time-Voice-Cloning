@@ -25,6 +25,26 @@ dependencies = [
   "webrtcvad==2.0.10",
 ]
 
+[project.scripts]
+clone-voice = "clone_voice:main"
+voice-clone-doctor = "doctor:main"
+
+[build-system]
+requires = ["setuptools<=80.8.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["clone_voice", "doctor"]
+
+[tool.setuptools.packages.find]
+include = [
+  "encoder*",
+  "synthesizer*",
+  "toolbox*",
+  "utils*",
+  "vocoder*",
+]
+
 [project.optional-dependencies]
 # CPU-only torch (default in CI)
 cpu   = ["torch==1.10.*"]

@@ -12,6 +12,7 @@ My goal with this fork is to reproduce, maintain, and improve the development wo
 - Lightweight functional test coverage for encoder preprocessing
 - Automatic pretrained model download from Hugging Face
 - Non-interactive one-command cloning CLI
+- Setup diagnostics with `voice-clone-doctor`
 - Windows/Linux setup and troubleshooting notes
 - Clear responsible-use guidance for voice cloning experiments
 
@@ -64,12 +65,18 @@ uv run --extra cpu demo_cli.py
 uv run --extra cuda demo_cli.py
 ```
 
+Check your setup before running model inference:
+
+```bash
+uv run --extra cpu voice-clone-doctor
+```
+
 ## One-Command Voice Cloning
 
 Generate audio from a reference sample and text prompt:
 
 ```bash
-uv run --extra cpu clone_voice.py \
+uv run --extra cpu clone-voice \
   --reference samples/p240_00000.mp3 \
   --text "Welcome to my real-time voice cloning experiment." \
   --output outputs/demo_output.wav
@@ -78,7 +85,7 @@ uv run --extra cpu clone_voice.py \
 Use CUDA on an NVIDIA GPU:
 
 ```bash
-uv run --extra cuda clone_voice.py \
+uv run --extra cuda clone-voice \
   --reference samples/p240_00000.mp3 \
   --text "Welcome to my real-time voice cloning experiment." \
   --output outputs/demo_output.wav
@@ -134,6 +141,7 @@ CI runs the same smoke and lightweight functional tests on Ubuntu with Python 3.
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
 - [Architecture](docs/ARCHITECTURE.md)
 - [Benchmarking](docs/BENCHMARK.md)
+- [Comparison with upstream](docs/COMPARISON.md)
 
 ## Responsible Use
 
