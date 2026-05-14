@@ -99,6 +99,10 @@ The first run downloads pretrained SV2TTS models from [Hugging Face](https://hug
 
 ## Demo
 
+Published audio artifact:
+
+[demo-audio-v1 release](https://github.com/Acceleratorer/Real-Time-Voice-Cloning/releases/tag/demo-audio-v1)
+
 Reference voice for normal runs:
 
 ```text
@@ -121,7 +125,7 @@ Generated demo spectrogram:
 
 ![Generated demo spectrogram](assets/demo_spectrogram.png)
 
-Run the command in the previous section to create audio locally. Generated WAV files are ignored by git so demo artifacts do not accidentally bloat the repository.
+Run the command in the previous section to create audio locally. Generated WAV files are ignored by git so demo artifacts do not accidentally bloat the repository. See [docs/DEMO.md](docs/DEMO.md) for the exact published demo notes.
 
 ## Local Benchmark
 
@@ -148,6 +152,7 @@ CI runs the same smoke and lightweight functional tests on Ubuntu with Python 3.
 - [Windows setup](docs/SETUP_WINDOWS.md)
 - [Troubleshooting](docs/TROUBLESHOOTING.md)
 - [Architecture](docs/ARCHITECTURE.md)
+- [Demo artifact](docs/DEMO.md)
 - [Benchmarking](docs/BENCHMARK.md)
 - [Comparison with upstream](docs/COMPARISON.md)
 - [CV wording](docs/CV.md)

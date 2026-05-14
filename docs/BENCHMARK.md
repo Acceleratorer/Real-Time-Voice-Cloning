@@ -37,6 +37,8 @@ These numbers are a single warm run after pretrained models were already downloa
 | CPU | 5s | 7 words | 0.13s | 0.13s | 1.43s | 18.86s | `outputs/demo_output_cpu.wav` |
 | CUDA | 5s | 7 words | 4.60s | 2.25s | 4.39s | 17.19s | `outputs/demo_output_cuda.wav` |
 
+The CUDA output from this benchmark is published as the [demo-audio-v1 release](https://github.com/Acceleratorer/Real-Time-Voice-Cloning/releases/tag/demo-audio-v1).
+
 ## Notes
 
 - First-run model download time should not be included in inference benchmarks.
